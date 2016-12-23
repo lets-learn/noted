@@ -1,0 +1,231 @@
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */
+input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}button[disabled],input[disabled]{cursor:default;}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}body,figure{margin:0;}legend,button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+body {
+	background: linear-gradient(141deg,rgba(228, 220, 179, 0.41),rgba(30, 86, 187, 0.24));
+	color: #343e3e;
+	min-height: 100vh;
+}
+
+
+
+/*
+	Main Header
+*/
+
+.mainHeader {
+	padding: 0 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: white;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+.mainHeader a {
+	margin: 0 10px;
+	color: #343e3e;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+/*
+	Sidebar
+*/
+
+.sidebar {
+	width: 250px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -270px;
+	background: #7fb5d7;
+	transition: all 0.5s ease;
+	padding: 0 15px;
+}
+
+.sidebar.show {
+	left: 0;
+}
+
+.sidebar input,
+.sidebar textarea {
+	width: 100%;
+	margin-bottom: 25px;
+	background: rgba(255,255,255,0.4);
+	border: none;
+	border-bottom: 2px solid #517288;
+	padding: 5px;
+}
+
+.sidebar textarea {
+	height: 200px;
+}
+
+.sidebar input[type=submit] {
+	border: none;
+	color: #2f424e;
+	background-color: white;
+}
+
+.sidebar .close-btn {
+	position: absolute;
+	right: -15px;
+	top: 10px;
+	padding: 10px;
+	background-color: #7fb5d7;
+}
+
+/*
+	Notes container
+*/
+
+.notes {
+	padding: 0 50px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.noteCard {
+	flex: 1 0 200px;
+	background: white;
+	box-shadow: 3px 2px 3px rgba(0,0,0,0.1);
+	margin: 15px;
+	padding: 20px;
+	position: relative;
+}
+
+.noteCard h4 {
+	margin-top: 0;
+	position: relative;
+}
+
+.noteCard h4:after {
+	width: 20px;
+	height: 2px;
+	background: #182020;
+	display: block;
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	content: "";
+}
+
+.noteCard input,
+.noteCard textarea {
+	border: none;
+	border-bottom: 2px solid #182020;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.noteCard .fa-times,
+.noteCard .fa-edit {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 5;
+}
+.noteCard .fa:hover {
+	cursor: pointer;
+}
+
+.noteCard .fa-edit {
+	right: 50px;
+}
+
+.noteCard input[type=submit] {
+	width: auto;
+	border: 2px solid #182020;
+	color: #182020;
+	background: transparent;
+}
+
+/*
+	Modals
+*/
+
+.modal,
+.overlay {
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s ease;
+	position: absolute;
+}
+
+.modal.show,
+.overlay.show {
+	visibility: visible;
+	opacity: 1;
+}
+
+.modal {
+	width: 400px;
+	background: white;
+	border: 10px solid rgba(255,255,255,0.5);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 5px;
+	box-shadow: 0 0 35px rgba(0,0,0,0.2);
+}
+
+.modal div {
+	margin: 15px;
+}
+.modal label {
+	margin-right: 10px;
+}
+
+.modal input {
+	display: block;
+	width: 100%;
+	height: 50px;
+	font-size: 25px;
+	padding: 0 10px;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+.modal input[type=submit] {
+	background: rgba(50, 216, 81, 0.94);
+	box-shadow: 0px 3px 0 rgba(91, 165, 104, 0.94);
+	color: white;
+	border: none;
+}
+
+.modal input[type=submit]:hover,
+.modal input[type=submit]:focus {
+	background-color: rgba(86, 234, 114, 0.94);
+	outline: none;
+}
+
+.modal input[type=submit]:active {
+	box-shadow: 0px 0px 0 rgba(91, 165, 104, 0.94);
+}
+
+.modal .close {
+	position: absolute;
+	right: -45px;
+	top: -10px;
+	background: white;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.overlay {
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.4);
+}
+
+
+
+
+
